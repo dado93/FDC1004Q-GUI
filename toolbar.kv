@@ -1,0 +1,111 @@
+#:kivy 1.11.1
+#:import toolbar toolbar
+
+<ToolBar>:	
+	padding: 10
+	spacing: 5
+	orientation: 'vertical'
+	device_label: _device_label
+	sensor_label: _sensor_label
+	sample_rate: _sample_rate
+	channel_configuration: _channel_configuration
+	sample_rate_spinner: _sample_rate_spinner
+	canvas:
+		Color:
+			rgba: 0.6,0.6,0.6,6
+		Rectangle:
+			size: self.size
+			pos: self.pos
+	
+	DeviceLabel:
+		id: _device_label
+		size_hint: (1.0, 0.1)	
+		text: 'Device not found'
+	SensorLabel:
+		id: _sensor_label
+		size_hint: (1.0, 0.1)	
+		text: 'Sensor not found'
+		disabled: True
+
+	Label:
+		text: 'Device Configuration'
+		size_hint: (1.0, 0.1)
+		disabled: False
+		color: 0.1,0.1,0.1,1.0
+		bold: True
+	GridLayout:
+		id: _sample_rate
+		disabled: True
+		cols: 2
+		size_hint: (1.0, 0.1)
+		Label: 
+        	text: 'Sample Rate'
+    	Spinner:
+			id: _sample_rate_spinner
+			values: '100 Hz', '200 Hz', '400 Hz'
+			text: '100 Hz'
+			on_text: root.sample_rate_change()
+	Label:
+		text: 'Channel Configuration'
+		size_hint: (1.0, 0.1)
+		disabled: False
+		color: 0.1,0.1,0.1,1.0
+		bold: True
+    ChannelConfiguration:
+		id: _channel_configuration
+        cols: 2
+		size_hint: (1.0, 0.6)
+		disabled: True
+
+	#Widget:
+
+<DeviceLabel>:
+	canvas.before:
+		Color: 
+			rgba: 0.8,0.2,0.2,1
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<SensorLabel>:
+	canvas.before:
+		Color: 
+			rgba: 0.2,0.2,0.2,1
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<ChannelConfiguration@GridLayout>:
+    Label: 
+        text: 'Channel'
+    Spinner:
+		values: '1', '2', '3', '4'
+		text: '1'
+
+	Label:
+		text: 'Offset' 
+	FloatInput:
+		halign: 'center'
+	
+	Label:
+		text: 'Gain' 
+	FloatInput:
+	
+	Label:
+		text: 'Pos'
+	Spinner:
+		values: '1','2','3','4'
+	Label:
+		text: 'Neg'
+	Spinner:
+		values: '1','2','3','4','CAPDAC', 'GND'
+	
+	Label:
+		text: 'CAPDAC'
+	FloatInput:
+
+	Button:
+		text: 'Reset'
+	Button:
+		text: 'Send'
+

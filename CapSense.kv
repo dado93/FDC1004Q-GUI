@@ -1,0 +1,45 @@
+#:kivy 1.11.1
+
+<CapSenseContainer>:
+    orientation: 'vertical'
+	toolbar: _toolbar
+	bottom_bar: _bottom_bar
+
+    BoxLayout:
+		orientation: 'horizontal'
+		size_hint: (1.0, 0.9)
+		spacing: 5
+		padding: 10
+		ToolBar:
+			id: _toolbar
+			size_hint: (0.3, 1.0)
+			parent: root
+        BoxLayout:
+            size_hint: (0.7, 1.0)
+    	    Label:
+                text: 'Test'
+
+    BoxLayout:
+		size_hint: (1.0, 0.1)
+		canvas:
+			Color:
+				rgba: 1,1,1,1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+			Color:
+				rgba: 0,0,0,1
+			Rectangle:
+				pos: (self.x + 5, self.y + 5)
+				size: (root.width - 10, self.height - 10)
+		BottomBar:
+			id: _bottom_bar
+			text: 'Welcome to the CapSense GUI'
+			
+			
+
+<BottomBar>:
+	padding_x: 20
+	halign: 'left'
+	valign: 'center'
+	text_size: self.size
