@@ -7,7 +7,10 @@
 	orientation: 'vertical'
 	device_label: _device_label
 	sensor_label: _sensor_label
+	manufacturer_id_label: _man_id_label
+	device_id_label: _dev_id_label
 	sample_rate: _sample_rate
+
 	channel_configuration: _channel_configuration
 	sample_rate_spinner: _sample_rate_spinner
 	canvas:
@@ -26,7 +29,19 @@
 		size_hint: (1.0, 0.1)	
 		text: 'Sensor not found'
 		disabled: True
-
+	ManufacturerIdLabel:
+		id: _man_id_label
+		size_hint: (1.0, 0.1)	
+		text: 'Man Id:'
+		disabled: True	
+		color: 1,1,1,1
+	DeviceIdLabel:
+		id: _dev_id_label
+		size_hint: (1.0, 0.1)	
+		text: 'Dev Id:'
+		disabled: True
+		color: 1,1,1,1
+	
 	Label:
 		text: 'Device Configuration'
 		size_hint: (1.0, 0.1)
@@ -75,6 +90,22 @@
 			size: self.size
 			pos: self.pos
 
+<ManufacturerIdLabel>:
+	canvas.before:
+		Color: 
+			rgba: 0.2,0.2,0.2,1
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<DeviceIdLabel>:
+	canvas.before:
+		Color: 
+			rgba: 0.2,0.2,0.2,1
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
 <ChannelConfiguration@GridLayout>:
     Label: 
         text: 'Channel'
@@ -103,6 +134,11 @@
 	Label:
 		text: 'CAPDAC'
 	FloatInput:
+
+	Label:
+		text: 'Enable'
+	CheckBox:
+
 
 	Button:
 		text: 'Reset'

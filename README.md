@@ -2,6 +2,8 @@
 This is a Kivy-based GUI for interfacing with a FDC1004Q capacitive sensor connected to a PSoC device.
 You can find the companion firmware for this GUI at the following [repository](https://github.com/dado93/PSoC-FDC1004Q).
 
+
+
 ## Setup
 - Install Python > 3
 - Install [virtualenv](https://docs.python-guide.org/dev/virtualenvs/)
